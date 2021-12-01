@@ -11,4 +11,4 @@ Advent of Code is a series of daily [programming puzzles](https://adventofcode.c
 
 > example for day 1:
 >
-> `dart run day1.dart`
+> `dart run day01.dart`
