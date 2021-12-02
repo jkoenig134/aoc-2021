@@ -1,3 +1,4 @@
+import './lib/extensions.dart';
 import './lib/input_reader.dart';
 
 main(List<String> args) {
@@ -14,29 +15,10 @@ main(List<String> args) {
   """);
 }
 
-int part1(List<int> input) {
-  var higher = 0;
-  int current = input.first;
-
-  input.skip(1).forEach((i) {
-    if (i > current) higher++;
-    current = i;
-  });
-
-  return higher;
-}
+int part1(List<int> input) =>
+    input.windowed(2).where((w) => w[1] > w[0]).length;
 
 int part2(List<int> input) {
-  var higher = 0;
-
-  var sum = (int i) => input[i] + input[(i + 1)] + input[(i + 2)];
-
-  for (var i = 0; i < input.length - 3; i++) {
-    int current = sum(i);
-    int next = sum(i + 1);
-
-    if (current < next) higher++;
-  }
-
-  return higher;
+  final unnoised = input.windowed(3).map((w) => w.sum).toList();
+  return part1(unnoised);
 }
