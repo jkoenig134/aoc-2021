@@ -1,23 +1,87 @@
+import './lib/extensions.dart';
 import './lib/input_reader.dart';
 
 main(List<String> args) {
-  var testInput = InputReader.test(3).asInt();
+  var testInput = InputReader.test(3).asStringList();
   print("""Test
   (1) ${part1(testInput)}
   (2) ${part2(testInput)}
   """);
 
-  var input = InputReader(3).asInt();
+  var input = InputReader(3).asStringList();
   print("""Real
   (1) ${part1(input)}
   (2) ${part2(input)}
   """);
 }
 
-int part1(List<int> input) {
-  return 0;
+int part1(List<List<String>> input) {
+  final flipped = InputReader.asFlippedStringList(input);
+  var epsilon = "", gamma = "";
+
+  for (var bits in flipped) {
+    final oneLength = bits.where((e) => e == "1").length;
+    final zeroLength = bits.where((e) => e == "0").length;
+
+    if (oneLength > zeroLength) {
+      epsilon += "0";
+      gamma += "1";
+    } else {
+      epsilon += "1";
+      gamma += "0";
+    }
+  }
+
+  return epsilon.binaryToDecimal * gamma.binaryToDecimal;
 }
 
-int part2(List<int> input) {
-  return 0;
+enum LifeSupport { OxygenGenerator, Co2Scrubber }
+
+int part2(List<List<String>> input) {
+  final oxygenGeneratorRating = processLifeSupportRating(
+    input,
+    LifeSupport.OxygenGenerator,
+  );
+  final co2ScrubberRating = processLifeSupportRating(
+    input,
+    LifeSupport.Co2Scrubber,
+  );
+
+  return oxygenGeneratorRating * co2ScrubberRating;
+}
+
+int processLifeSupportRating(
+  List<List<String>> input,
+  LifeSupport lifeSupport,
+) {
+  var row = 0;
+
+  final copy =
+      input.map((row) => row.map((element) => element).toList()).toList();
+
+  while (copy.length > 1) {
+    final flipped = InputReader.asFlippedStringList(copy);
+
+    final bits = flipped[row];
+    final oneLength = bits.where((element) => element == "1").length;
+    final zeroLength = bits.where((element) => element == "0").length;
+
+    if (lifeSupport == LifeSupport.Co2Scrubber) {
+      if (zeroLength > oneLength) {
+        copy.removeWhere((element) => element[row] == "0");
+      } else {
+        copy.removeWhere((element) => element[row] == "1");
+      }
+    } else {
+      if (oneLength < zeroLength) {
+        copy.removeWhere((element) => element[row] == "1");
+      } else {
+        copy.removeWhere((element) => element[row] == "0");
+      }
+    }
+
+    row++;
+  }
+
+  return copy[0].join().binaryToDecimal;
 }
