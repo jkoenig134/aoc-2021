@@ -16,7 +16,7 @@ main(List<String> args) {
 }
 
 int part1(List<List<String>> input) {
-  final flipped = InputReader.asFlippedStringList(input);
+  final flipped = input.flipped();
   var epsilon = "", gamma = "";
 
   for (var bits in flipped) {
@@ -60,7 +60,7 @@ int processLifeSupportRating(
       input.map((row) => row.map((element) => element).toList()).toList();
 
   while (copy.length > 1) {
-    final flipped = InputReader.asFlippedStringList(copy);
+    final flipped = copy.flipped();
 
     final bits = flipped[row];
     final oneLength = bits.where((element) => element == "1").length;

@@ -6,6 +6,8 @@ class InputReader {
   InputReader.test(int day)
       : _input = File('./input/$day.test.txt').readAsStringSync();
 
+  String raw() => _input;
+
   List<String> asString() => _input.split("\n");
 
   List<String> asNewlineString() =>

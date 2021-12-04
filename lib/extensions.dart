@@ -10,3 +10,21 @@ extension Sum on List<int> {
 extension BinaryToDecimal on String {
   int get binaryToDecimal => int.parse(this, radix: 2);
 }
+
+extension FlipListOfLists<T> on List<List<T>> {
+  List<List<T>> flipped() {
+    List<List<T>> flipped = [];
+
+    for (var i = 0; i < this[1].length; i++) {
+      final row = <T>[];
+
+      for (var j = 0; j < this.length; j++) {
+        row.add(this[j][i]);
+      }
+
+      flipped.add(row);
+    }
+
+    return flipped;
+  }
+}
