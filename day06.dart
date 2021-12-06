@@ -25,18 +25,17 @@ class Swarm {
 }
 
 main(List<String> args) {
-  var testInput = InputReader.test(6).raw();
+  final testInput = InputReader.test(6).raw();
+  final testSwarm = Swarm(testInput);
   print("""Test
-  (1) ${part1(testInput)}
-  (2) ${part2(testInput)}
+  (1) ${testSwarm.ageForDays(80).numberOfFishes}
+  (2) ${testSwarm.ageForDays(256 - 80).numberOfFishes}
   """);
 
-  var input = InputReader(6).raw();
+  final input = InputReader(6).raw();
+  final swarm = Swarm(input);
   print("""Real
-  (1) ${part1(input)}
-  (2) ${part2(input)}
+  (1) ${swarm.ageForDays(80).numberOfFishes}
+  (2) ${swarm.ageForDays(256 - 80).numberOfFishes}
   """);
 }
-
-int part1(String input) => Swarm(input).ageForDays(80).numberOfFishes;
-int part2(String input) => Swarm(input).ageForDays(256).numberOfFishes;
