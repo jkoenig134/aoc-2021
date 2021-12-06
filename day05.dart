@@ -3,15 +3,12 @@ import 'dart:math';
 import './lib/input_reader.dart';
 
 class Position {
-  final int x;
-  final int y;
+  final int x, y;
 
   Position(this.x, this.y);
 
   @override
-  String toString() {
-    return "${x},${y}";
-  }
+  String toString() => '$x,$y';
 }
 
 class Path {
@@ -60,17 +57,15 @@ class Path {
 }
 
 int findCommonPoints(List<String> input, [bool includeDiagonals = false]) {
-  final paths = input.map((line) => Path.fromString(line)).toList();
-  final positions = paths
+  final positions = input
+      .map((line) => Path.fromString(line))
       .map((e) => e.calculatePositions(includeDiagonals))
       .expand((e) => e)
-      .map((e) => e.toString())
-      .toList();
+      .map((e) => e.toString());
 
   var occurences = Map<String, int>();
   positions.forEach(
-    (position) =>
-        occurences[position] = occurences.putIfAbsent(position, () => 0) + 1,
+    (p) => occurences[p] = occurences.putIfAbsent(p, () => 0) + 1,
   );
 
   return occurences.values.where((v) => v > 1).length;
