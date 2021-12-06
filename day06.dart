@@ -1,33 +1,28 @@
 import './lib/extensions.dart';
 import './lib/input_reader.dart';
 
-class FishesOfAge {
-  final fishes = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0};
+class Swarm {
+  final fishes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  FishesOfAge(String input) {
+  Swarm(String input) {
     input
         .split(",")
         .map(int.parse)
-        .forEach((age) => fishes[age] = fishes[age]! + 1);
+        .forEach((age) => fishes[age] = fishes[age] + 1);
   }
 
   void age() {
-    final zeros = fishes[0]!;
-
-    for (var i = 0; i < 8; i++) {
-      fishes[i] = fishes[i + 1]!;
-    }
-
-    fishes[6] = fishes[6]! + zeros;
-    fishes[8] = zeros;
+    final zeroes = fishes.removeAt(0);
+    fishes[6] = fishes[6] + zeroes;
+    fishes.add(zeroes);
   }
 
-  FishesOfAge ageForDays(int days) {
+  Swarm ageForDays(int days) {
     for (var i = 0; i < days; i++) age();
     return this;
   }
 
-  int get total => fishes.values.toList().sum;
+  int get total => fishes.sum;
 }
 
 main(List<String> args) {
@@ -44,5 +39,5 @@ main(List<String> args) {
   """);
 }
 
-int part1(String input) => FishesOfAge(input).ageForDays(80).total;
-int part2(String input) => FishesOfAge(input).ageForDays(256).total;
+int part1(String input) => Swarm(input).ageForDays(80).total;
+int part2(String input) => Swarm(input).ageForDays(256).total;
