@@ -3,7 +3,7 @@ extension Windowed<T> on List<T> {
       [for (var i = 0; i <= this.length - size; i++) this.sublist(i, i + size)];
 }
 
-extension Sum on List<int> {
+extension Sum on Iterable<int> {
   int get sum => this.fold(0, (a, b) => a + b);
 }
 

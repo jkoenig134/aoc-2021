@@ -6,6 +6,10 @@ class BingoField {
   var checked = false;
 
   BingoField(this.value);
+
+  void submit(int number) {
+    if (number == value) checked = true;
+  }
 }
 
 class BingoBoard {
@@ -28,49 +32,19 @@ class BingoBoard {
     columns = rows.flipped();
   }
 
-  bool _isWinner() {
-    for (var row in rows) {
-      if (row.every((field) => field.checked)) {
-        return true;
-      }
-    }
-
-    for (var column in columns) {
-      if (column.every((field) => field.checked)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
+  bool _isWinner() =>
+      rows.any((r) => r.every((f) => f.checked)) ||
+      columns.any((c) => c.every((f) => f.checked));
 
   bool submitNumber(int number) {
-    for (var row in rows) {
-      for (var field in row) {
-        if (field.value == number) {
-          field.checked = true;
-        }
-      }
-    }
-
-    for (var column in columns) {
-      for (var field in column) {
-        if (field.value == number) {
-          field.checked = true;
-        }
-      }
-    }
+    rows.forEach((row) => row.forEach((field) => field.submit(number)));
+    columns.forEach((col) => col.forEach((field) => field.submit(number)));
 
     return _isWinner();
   }
 
   int uncheckedSum() => rows
-      .map((e) => e
-          .where((element) => !element.checked)
-          .map((e) => e.value)
-          .toList()
-          .sum)
-      .toList()
+      .map((row) => row.where((f) => !f.checked).map((f) => f.value).sum)
       .sum;
 }
 
