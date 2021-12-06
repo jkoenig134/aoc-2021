@@ -3,6 +3,7 @@ import './lib/input_reader.dart';
 
 class Swarm {
   final fishes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  int get numberOfFishes => fishes.sum;
 
   Swarm(String input) {
     input
@@ -21,8 +22,6 @@ class Swarm {
     for (var i = 0; i < days; i++) age();
     return this;
   }
-
-  int get total => fishes.sum;
 }
 
 main(List<String> args) {
@@ -39,5 +38,5 @@ main(List<String> args) {
   """);
 }
 
-int part1(String input) => Swarm(input).ageForDays(80).total;
-int part2(String input) => Swarm(input).ageForDays(256).total;
+int part1(String input) => Swarm(input).ageForDays(80).numberOfFishes;
+int part2(String input) => Swarm(input).ageForDays(256).numberOfFishes;
