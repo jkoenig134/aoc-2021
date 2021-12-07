@@ -1,10 +1,10 @@
 extension Windowed<T> on List<T> {
   List<List<T>> windowed(int size) =>
-      [for (int i = 0; i <= this.length - size; i++) this.sublist(i, i + size)];
+      [for (int i = 0; i <= length - size; i++) sublist(i, i + size)];
 }
 
 extension Sum on Iterable<int> {
-  int get sum => this.fold(0, (a, b) => a + b);
+  int get sum => fold(0, (a, b) => a + b);
 }
 
 extension BinaryToDecimal on String {
@@ -18,7 +18,7 @@ extension FlipListOfLists<T> on List<List<T>> {
     for (int i = 0; i < this[1].length; i++) {
       final row = <T>[];
 
-      for (int j = 0; j < this.length; j++) {
+      for (int j = 0; j < length; j++) {
         row.add(this[j][i]);
       }
 

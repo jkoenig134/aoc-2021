@@ -35,16 +35,16 @@ int part1(List<List<String>> input) {
   return epsilon.binaryToDecimal * gamma.binaryToDecimal;
 }
 
-enum LifeSupport { OxygenGenerator, Co2Scrubber }
+enum LifeSupport { oxygenGenerator, co2Scrubber }
 
 int part2(List<List<String>> input) {
   final oxygenGeneratorRating = processLifeSupportRating(
     input,
-    LifeSupport.OxygenGenerator,
+    LifeSupport.oxygenGenerator,
   );
   final co2ScrubberRating = processLifeSupportRating(
     input,
-    LifeSupport.Co2Scrubber,
+    LifeSupport.co2Scrubber,
   );
 
   return oxygenGeneratorRating * co2ScrubberRating;
@@ -66,7 +66,7 @@ int processLifeSupportRating(
     final oneLength = bits.where((element) => element == "1").length;
     final zeroLength = bits.where((element) => element == "0").length;
 
-    if (lifeSupport == LifeSupport.Co2Scrubber) {
+    if (lifeSupport == LifeSupport.co2Scrubber) {
       if (zeroLength > oneLength) {
         copy.removeWhere((element) => element[row] == "0");
       } else {

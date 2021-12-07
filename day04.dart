@@ -17,7 +17,7 @@ class BingoBoard {
   late final List<List<BingoField>> columns;
 
   BingoBoard.fromString(String input) {
-    this.rows = input
+    rows = input
         .split("\n")
         .map(
           (e) => e

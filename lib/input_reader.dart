@@ -11,7 +11,7 @@ class InputReader {
 
   String raw() => _input;
 
-  List<String> asString() => _input.split(this.splitPattern);
+  List<String> asString() => _input.split(splitPattern);
   List<int> asInt() => asString().map(int.parse).toList();
 
   List<String> asNewlineString() =>

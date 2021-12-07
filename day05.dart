@@ -63,7 +63,7 @@ int findCommonPoints(List<String> input, [bool includeDiagonals = false]) {
       .expand((e) => e)
       .map((e) => e.toString());
 
-  final occurences = Map<String, int>();
+  final occurences = <String, int>{};
   positions.forEach(
     (p) => occurences[p] = occurences.putIfAbsent(p, () => 0) + 1,
   );

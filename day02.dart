@@ -21,7 +21,7 @@ class Instruction {
         break;
     }
 
-    this.steps = int.parse(split[1]);
+    steps = int.parse(split[1]);
   }
 
   static List<Instruction> fromStringList(List<String> input) =>

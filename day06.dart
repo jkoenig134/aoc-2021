@@ -19,7 +19,9 @@ class Swarm {
   }
 
   Swarm ageForDays(int days) {
-    for (int i = 0; i < days; i++) age();
+    for (int i = 0; i < days; i++) {
+      age();
+    }
     return this;
   }
 }
