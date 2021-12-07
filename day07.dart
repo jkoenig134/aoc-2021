@@ -33,4 +33,4 @@ int calculateMinimalCost(List<int> input, int Function(int) costFunction) {
 int part1(List<int> input) => calculateMinimalCost(input, (e) => e);
 
 int part2(List<int> input) =>
-    calculateMinimalCost(input, (e) => [for (var i = 1; i <= e; i++) i].sum);
+    calculateMinimalCost(input, (e) => [for (int i = 1; i <= e; i++) i].sum);

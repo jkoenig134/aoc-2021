@@ -47,7 +47,7 @@ class Path {
     if (!includeDiagonals) return [];
 
     return [
-      for (var x = start.x, y = start.y;
+      for (int x = start.x, y = start.y;
           x != end.x;
           x += (start.x > end.x ? -1 : 1), y += (start.y > end.y ? -1 : 1))
         Position(x, y),
@@ -63,7 +63,7 @@ int findCommonPoints(List<String> input, [bool includeDiagonals = false]) {
       .expand((e) => e)
       .map((e) => e.toString());
 
-  var occurences = Map<String, int>();
+  final occurences = Map<String, int>();
   positions.forEach(
     (p) => occurences[p] = occurences.putIfAbsent(p, () => 0) + 1,
   );
@@ -72,13 +72,13 @@ int findCommonPoints(List<String> input, [bool includeDiagonals = false]) {
 }
 
 main(List<String> args) {
-  var testInput = InputReader.test(5).asString();
+  final testInput = InputReader.test(5).asString();
   print("""Test
   (1) ${part1(testInput)}
   (2) ${part2(testInput)}
   """);
 
-  var input = InputReader(5).asString();
+  final input = InputReader(5).asString();
   print("""Real
   (1) ${part1(input)}
   (2) ${part2(input)}

@@ -2,13 +2,13 @@ import './lib/extensions.dart';
 import './lib/input_reader.dart';
 
 main(List<String> args) {
-  var testInput = InputReader.test(3).asStringList();
+  final testInput = InputReader.test(3).asStringList();
   print("""Test
   (1) ${part1(testInput)}
   (2) ${part2(testInput)}
   """);
 
-  var input = InputReader(3).asStringList();
+  final input = InputReader(3).asStringList();
   print("""Real
   (1) ${part1(input)}
   (2) ${part2(input)}
@@ -17,9 +17,9 @@ main(List<String> args) {
 
 int part1(List<List<String>> input) {
   final flipped = input.flipped();
-  var epsilon = "", gamma = "";
+  String epsilon = "", gamma = "";
 
-  for (var bits in flipped) {
+  for (final bits in flipped) {
     final oneLength = bits.where((e) => e == "1").length;
     final zeroLength = bits.where((e) => e == "0").length;
 
@@ -54,7 +54,7 @@ int processLifeSupportRating(
   List<List<String>> input,
   LifeSupport lifeSupport,
 ) {
-  var row = 0;
+  int row = 0;
 
   final copy =
       input.map((row) => row.map((element) => element).toList()).toList();

@@ -29,9 +29,9 @@ class Instruction {
 }
 
 class Submarine {
-  var horizontal = 0;
-  var depth = 0;
-  var aim = 0;
+  int horizontal = 0;
+  int depth = 0;
+  int aim = 0;
 
   void move(Instruction instruction) {
     switch (instruction.direction) {
@@ -56,15 +56,15 @@ class Submarine {
 }
 
 main(List<String> args) {
-  var testInput = Instruction.fromStringList(InputReader.test(2).asString());
-  var testShip = Submarine()..applyInstructions(testInput);
+  final testInput = Instruction.fromStringList(InputReader.test(2).asString());
+  final testShip = Submarine()..applyInstructions(testInput);
   print("""Test
   (1) ${testShip.part1()}
   (2) ${testShip.part2()}
   """);
 
-  var input = Instruction.fromStringList(InputReader(2).asString());
-  var ship = Submarine()..applyInstructions(input);
+  final input = Instruction.fromStringList(InputReader(2).asString());
+  final ship = Submarine()..applyInstructions(input);
   print("""Real
   (1) ${ship.part1()}
   (2) ${ship.part2()}

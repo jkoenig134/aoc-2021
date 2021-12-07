@@ -1,13 +1,13 @@
 import './lib/input_reader.dart';
 
 main(List<String> args) {
-  var testInput = InputReader.test(12).asInt();
+  final testInput = InputReader.test(12).asInt();
   print("""Test
   (1) ${part1(testInput)}
   (2) ${part2(testInput)}
   """);
 
-  var input = InputReader(12).asInt();
+  final input = InputReader(12).asInt();
   print("""Real
   (1) ${part1(input)}
   (2) ${part2(input)}

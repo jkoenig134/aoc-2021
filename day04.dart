@@ -3,7 +3,7 @@ import './lib/input_reader.dart';
 
 class BingoField {
   final int value;
-  var checked = false;
+  bool checked = false;
 
   BingoField(this.value);
 
@@ -49,13 +49,13 @@ class BingoBoard {
 }
 
 main(List<String> args) {
-  var testInput = InputReader.test(4).raw();
+  final testInput = InputReader.test(4).raw();
   print("""Test
   (1) ${part1(testInput)}
   (2) ${part2(testInput)}
   """);
 
-  var input = InputReader(4).raw();
+  final input = InputReader(4).raw();
   print("""Real
   (1) ${part1(input)}
   (2) ${part2(input)}
@@ -70,8 +70,8 @@ int part1(String input) {
 
   final bingoBoards = splitted.map((e) => BingoBoard.fromString(e)).toList();
 
-  for (var instruction in bingoInstructions) {
-    for (var board in bingoBoards) {
+  for (final instruction in bingoInstructions) {
+    for (final board in bingoBoards) {
       if (board.submitNumber(instruction)) {
         final uncheckedSum = board.uncheckedSum();
         return uncheckedSum * instruction;
@@ -90,7 +90,7 @@ int part2(String input) {
 
   final bingoBoards = splitted.map((e) => BingoBoard.fromString(e)).toList();
 
-  for (var instruction in bingoInstructions) {
+  for (final instruction in bingoInstructions) {
     if (bingoBoards.length == 1) {
       final board = bingoBoards[0];
       if (board.submitNumber(instruction)) {
