@@ -2,11 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Fetch Today",
-      "command": "dart run _archive/fill.dart",
+      "label": "Daily Setup",
+      "command": "dart run _archive/daily_setup.dart",
       "type": "shell",
       "presentation": {
-        "reveal": "always"
+        "reveal": "never"
       },
       "group": "build"
     }
