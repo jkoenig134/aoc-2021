@@ -99,7 +99,6 @@ class DigitProcessor {
 int part2(List<String> input) {
   return input
       .map((e) => e.split(' | '))
-      .map((split) => DigitProcessor(split[0], split[1]))
-      .map((processor) => processor.calculate())
+      .map((e) => DigitProcessor(e[0], e[1]).calculate())
       .sum;
 }
