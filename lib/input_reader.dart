@@ -19,4 +19,9 @@ class InputReader {
 
   List<List<String>> asStringList() =>
       _input.split("\n").map((e) => e.split("")).toList();
+
+  List<List<int>> asIntList() => _input
+      .split("\n")
+      .map((e) => e.split("").map(int.parse).toList())
+      .toList();
 }
