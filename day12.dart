@@ -1,19 +1,5 @@
 import './lib/input_reader.dart';
 
-main(List<String> args) {
-  final testInput = Graph.fromInput(InputReader.test(12).asString());
-  print("""Test
-  (1) ${part1(testInput)}
-  (2) ${part2(testInput)}
-  """);
-
-  final input = Graph.fromInput(InputReader(12).asString());
-  print("""Real
-  (1) ${part1(input)}
-  (2) ${part2(input)}
-  """);
-}
-
 class Point {
   final String name;
 
@@ -78,6 +64,20 @@ class Graph {
 
     return paths;
   }
+}
+
+main(List<String> args) {
+  final testInput = Graph.fromInput(InputReader.test(12).asString());
+  print("""Test
+  (1) ${part1(testInput)}
+  (2) ${part2(testInput)}
+  """);
+
+  final input = Graph.fromInput(InputReader(12).asString());
+  print("""Real
+  (1) ${part1(input)}
+  (2) ${part2(input)}
+  """);
 }
 
 int part1(Graph graph) => graph.getAllPaths("start", "end", false).length;
